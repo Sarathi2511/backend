@@ -39,13 +39,13 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://shreesarathielectrica
     const specialStafExists = await Staff.findOne({ phone: '7875353444' });
     if (!specialStafExists) {
       await Staff.create({
-        name: 'Staff User',
+        name: 'Special Staff User',
         phone: '7875353444',
         password: 'staff123',
         role: 'staff',
         email: 'special@electrical.com',
       });
-      console.log('Staff user created');
+      console.log('Special Staff User created');
     }
 
     // Initialize Staff user if not exists
