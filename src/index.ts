@@ -40,7 +40,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://shreesarathielectrica
     if (!specialStafExists) {
       await Staff.create({
         name: 'Staff User',
-        phone: '78753534444',
+        phone: '7875353444',
         password: 'staff123',
         role: 'staff',
         email: 'special@electrical.com',
