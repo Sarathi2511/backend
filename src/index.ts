@@ -35,6 +35,19 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://shreesarathielectrica
       console.log('Admin user created');
     }
 
+     // Initialize Special Staff user if not exists
+    const specialStafExists = await Staff.findOne({ phone: '7875353444' });
+    if (!specialStafExists) {
+      await Staff.create({
+        name: 'Staff User',
+        phone: '78753534444',
+        password: 'staff123',
+        role: 'staff',
+        email: 'special@electrical.com',
+      });
+      console.log('Staff user created');
+    }
+
     // Initialize Staff user if not exists
     const staffExists = await Staff.findOne({ phone: '9876543211' });
     if (!staffExists) {
@@ -51,6 +64,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://shreesarathielectrica
   .catch((error) => {
     console.error('MongoDB connection error:', error);
   });
+
+ 
 
 // Routes
 app.use('/api/products', productRoutes);
