@@ -5,6 +5,7 @@ export interface IOrderItem {
   productName: string;
   quantity: number;
   price: number;
+  dimension?: string;
 }
 
 export interface IOrder extends Document {
@@ -36,7 +37,8 @@ const OrderItemSchema = new Schema({
   productId: { type: String, required: true },
   productName: { type: String, required: true },
   quantity: { type: Number, required: true },
-  price: { type: Number, required: true }
+  price: { type: Number, required: true },
+  dimension: { type: String, required: false }
 });
 
 const OrderSchema = new Schema({
@@ -124,4 +126,4 @@ OrderSchema.pre('save', async function(next) {
   next();
 });
 
-export default mongoose.model<IOrder>('Order', OrderSchema); 
+export default mongoose.model<IOrder>('Order', OrderSchema);
