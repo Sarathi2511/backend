@@ -95,6 +95,11 @@ app.get('/api/health', async (req, res) => {
 
 app.use('/', (req, res) => {res.json("Welcome to Sarathi")});
 
+app.get('/ping', (req, res) => {
+    res.send('pong');
+});
+
+
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
