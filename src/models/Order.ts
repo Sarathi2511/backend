@@ -30,6 +30,8 @@ export interface IOrder extends Document {
   orderImage?: string;
   isPaid: boolean;
   paidAt?: Date;
+  paidBy?: string; // ID of the staff member who marked the order as paid
+  paymentReceivedBy?: string; // ID of the staff member who received the payment
   iswithout?: boolean;
 }
 
@@ -76,6 +78,8 @@ const OrderSchema = new Schema({
   orderImage: { type: String },
   isPaid: { type: Boolean, default: false },
   paidAt: { type: Date },
+  paidBy: { type: String, default: null },
+  paymentReceivedBy: { type: String, default: null },
   iswithout: { type: Boolean, default: false }
 });
 

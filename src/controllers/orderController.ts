@@ -144,11 +144,15 @@ export const getOrdersByStatus = async (req: Request, res: Response): Promise<vo
 // Mark order as paid
 export const markOrderAsPaid = async (req: Request, res: Response): Promise<void> => {
   try {
+    const { paidBy, paymentReceivedBy } = req.body;
+    
     const order = await Order.findByIdAndUpdate(
       req.params.id,
       { 
         isPaid: true,
-        paidAt: new Date()
+        paidAt: new Date(),
+        paidBy: paidBy || null,
+        paymentReceivedBy: paymentReceivedBy || null
       },
       { new: true }
     );
@@ -275,4 +279,4 @@ export const assignDeliveryPerson = async (req: Request, res: Response): Promise
     console.error('Error assigning delivery person:', error);
     res.status(500).json({ message: 'Error assigning delivery person', error });
   }
-}; 
+};

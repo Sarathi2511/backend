@@ -14,8 +14,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:8080',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
 app.use(express.json());
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://shreesarathielectricalsonline:Sarathi2511@clustersarathi.9azmyha.mongodb.net/?retryWrites=true&w=majority&appName=ClusterSarathi')
